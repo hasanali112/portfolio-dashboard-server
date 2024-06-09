@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express'
-import { projectService } from './project.service'
+import { blogService } from './blog.service'
 
-const createProject = async (req: Request, res: Response) => {
+const createBlog = async (req: Request, res: Response) => {
   try {
-    const projectData = req.body
-    const result = await projectService.projectCreate(projectData)
+    const blogData = req.body
+    const result = await blogService.blogCreate(blogData)
     res.status(200).json({
       success: true,
-      message: 'Project created succesfully',
+      message: 'Blog created succesfully',
       data: result,
     })
   } catch (error: any) {
@@ -18,12 +18,13 @@ const createProject = async (req: Request, res: Response) => {
     })
   }
 }
-const getAllProjects = async (req: Request, res: Response) => {
+
+const getAllBlogs = async (req: Request, res: Response) => {
   try {
-    const result = await projectService.allProjectsGet()
+    const result = await blogService.allBlogsGet()
     res.status(200).json({
       success: true,
-      message: 'Project retrieved successfully! 🎉',
+      message: 'Blogs retrieved successfully! 🎉',
       data: result,
     })
   } catch (error: any) {
@@ -33,13 +34,14 @@ const getAllProjects = async (req: Request, res: Response) => {
     })
   }
 }
-const getProjectsById = async (req: Request, res: Response) => {
+
+const getBlogsById = async (req: Request, res: Response) => {
   try {
     const id = req.params.id
-    const result = await projectService.projectsById(id)
+    const result = await blogService.blogsById(id)
     res.status(200).json({
       success: true,
-      message: 'Single Project retrieved successfully! 🎉',
+      message: 'Single Blog retrieved successfully! 🎉',
       data: result,
     })
   } catch (error: any) {
@@ -50,8 +52,8 @@ const getProjectsById = async (req: Request, res: Response) => {
   }
 }
 
-export const projectController = {
-  createProject,
-  getAllProjects,
-  getProjectsById,
+export const blogController = {
+  createBlog,
+  getAllBlogs,
+  getBlogsById,
 }

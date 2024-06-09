@@ -3,6 +3,7 @@ import cors from 'cors'
 import { skillRoutes } from './module/skill/skill.route'
 import { projectRoute } from './module/project/project.routes'
 import { userRoutes } from './module/user/user.routes'
+import { blogRoute } from './module/blog/blog.routes'
 const app: Application = express()
 
 app.use(express.json())
@@ -11,6 +12,7 @@ app.use(cors())
 app.use('/api/v1', skillRoutes)
 app.use('/api/v1', projectRoute)
 app.use('/api/v1', userRoutes)
+app.use('/api/v1', blogRoute)
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
