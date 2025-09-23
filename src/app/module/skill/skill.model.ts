@@ -5,6 +5,7 @@ const skillSchema = new Schema<TSkill>({
   image: { type: String, required: true },
   title: { type: String, required: true },
   skillProficiency: { type: Number, required: true },
+  type: { type: String, required: true },
 })
 
-export const SkillModel = model<TSkill>('Skill', skillSchema)
+export const Skill = model<TSkill>('Skill', skillSchema)

@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import app from './app'
 import config from './app/config'
 import { Server } from 'http'
+import seedSuperAdmin from './app/DB'
 
 const port = process.env.PORT || config.port
 
@@ -11,6 +12,14 @@ let server: Server
 async function main() {
   try {
     await mongoose.connect(config.database_url as string)
+    console.log('✅ Database connection successful!')
+
+    // Handle super admin seeding
+    try {
+      await seedSuperAdmin()
+    } catch (error) {
+      console.error('Failed to seed super admin:', error)
+    }
 
     server = app.listen(port, () => {
       console.log(`Portfolio app listening on port ${config.port}`)

@@ -1,8 +1,12 @@
 export type TProjct = {
-  image: string
-  title: string
+  projectTitle: string
   description: string
+  projectImage: string[]
   liveLink: string
-  gitRepoLink: string
-  useTechnology: string[]
+  gitRepoLinkFrontend?: string
+  gitRepoLinkBackend?: string
+  technology: {
+    technologyName: string
+    technologyImage: string
+  }[]
 }
