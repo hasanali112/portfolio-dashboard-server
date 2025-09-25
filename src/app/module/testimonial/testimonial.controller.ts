@@ -52,42 +52,50 @@ const deleteTestimonial = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-const getFeaturedTestimonials = catchAsync(async (req: Request, res: Response) => {
-  const result = await testimonialService.getFeaturedTestimonials()
-  sendResponse(res, {
-    statusCode: 200,
-    message: 'Featured testimonials retrieved successfully! 🎉',
-    data: result,
-  })
-})
+const getFeaturedTestimonials = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await testimonialService.getFeaturedTestimonials()
+    sendResponse(res, {
+      statusCode: 200,
+      message: 'Featured testimonials retrieved successfully! 🎉',
+      data: result,
+    })
+  },
+)
 
-const getHomepageTestimonials = catchAsync(async (req: Request, res: Response) => {
-  const result = await testimonialService.getHomepageTestimonials()
-  sendResponse(res, {
-    statusCode: 200,
-    message: 'Homepage testimonials retrieved successfully! 🎉',
-    data: result,
-  })
-})
+const getHomepageTestimonials = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await testimonialService.getHomepageTestimonials()
+    sendResponse(res, {
+      statusCode: 200,
+      message: 'Homepage testimonials retrieved successfully! 🎉',
+      data: result,
+    })
+  },
+)
 
-const getPublicTestimonials = catchAsync(async (req: Request, res: Response) => {
-  const result = await testimonialService.getPublicTestimonials()
-  sendResponse(res, {
-    statusCode: 200,
-    message: 'Public testimonials retrieved successfully! 🎉',
-    data: result,
-  })
-})
+const getPublicTestimonials = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await testimonialService.getPublicTestimonials()
+    sendResponse(res, {
+      statusCode: 200,
+      message: 'Public testimonials retrieved successfully! 🎉',
+      data: result,
+    })
+  },
+)
 
-const getTestimonialsByRating = catchAsync(async (req: Request, res: Response) => {
-  const minRating = Number(req.params.rating) || 4
-  const result = await testimonialService.getTestimonialsByRating(minRating)
-  sendResponse(res, {
-    statusCode: 200,
-    message: 'Testimonials by rating retrieved successfully! 🎉',
-    data: result,
-  })
-})
+const getTestimonialsByRating = catchAsync(
+  async (req: Request, res: Response) => {
+    const minRating = Number(req.params.rating) || 4
+    const result = await testimonialService.getTestimonialsByRating(minRating)
+    sendResponse(res, {
+      statusCode: 200,
+      message: 'Testimonials by rating retrieved successfully! 🎉',
+      data: result,
+    })
+  },
+)
 
 export const testimonialController = {
   createTestimonial,

@@ -7,7 +7,7 @@ const route = express.Router()
 route.post(
   '/',
   updloadSingleImage('clientImage'),
-  testimonialController.createTestimonial
+  testimonialController.createTestimonial,
 )
 route.get('/', testimonialController.getAllTestimonials)
 route.get('/featured', testimonialController.getFeaturedTestimonials)

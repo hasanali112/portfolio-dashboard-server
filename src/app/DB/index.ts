@@ -4,15 +4,7 @@ import config from '../config'
 import httpStatus from 'http-status'
 import { User } from '../module/user/user.model'
 import { AppError } from '../Error/AppError'
-
-const superUser = {
-  email: config.super_admin_email,
-  contactNumber: config.super_admin_contact_number,
-  password: config.super_admin_password,
-  role: 'superAdmin',
-  status: 'ACTIVE',
-  isDeleted: false,
-}
+import bcrypt from 'bcryptjs'
 
 const seedSuperAdmin = async () => {
   try {
@@ -22,6 +14,17 @@ const seedSuperAdmin = async () => {
     })
 
     if (!isSuperAdminExist) {
+      const hashedPassword = await bcrypt.hash(config.super_admin_password as string, 10)
+      
+      const superUser = {
+        email: config.super_admin_email,
+        contactNumber: config.super_admin_contact_number,
+        password: hashedPassword,
+        role: 'superAdmin',
+        status: 'ACTIVE',
+        isDeleted: false,
+      }
+
       await User.create(superUser)
       console.log('✅ Super admin created successfully')
     } else {

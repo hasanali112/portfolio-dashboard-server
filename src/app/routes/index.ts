@@ -5,13 +5,18 @@ import { projectRoute } from '../module/project/project.routes'
 import { shopRoute } from '../module/shop/shop.routes'
 import { experienceRoute } from '../module/expericence/experience.routes'
 import { aboutRoute } from '../module/about/about.routes'
-import { testimonialRoute } from '../module/testimonial/testimonial.routes'
 import { serviceRoute } from '../module/services/services.routes'
 import { contactRoute } from '../module/contact/contact.routes'
+import { authRoute } from '../module/auth/auth.routes'
+import { testimonialRoute } from '../module/testimonial/testimonial.routes'
 
 const middilewareRoutes = Router()
 
 const routes = [
+  {
+    path: '/auth',
+    route: authRoute,
+  },
   {
     path: '/blog',
     route: blogRoute,

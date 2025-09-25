@@ -1,8 +1,28 @@
 import { TContact, TContactInfo } from './contact.interface';
 import { Contact, ContactInfo } from './contact.model';
+import { sendEmail } from '../../utils/sendEmail';
+import { contactMessageTemplate } from '../../view/contactMessage';
+import config from '../../config';
 
 const createContact = async (contactData: TContact) => {
   const result = await Contact.create(contactData);
+  
+  // Send email notification
+  const emailHtml = contactMessageTemplate(
+    contactData.name,
+    contactData.email,
+    contactData.message,
+    contactData.subject,
+    contactData.phone
+  );
+  
+  await sendEmail(
+    config.super_admin_email as string,
+    emailHtml,
+    'New Contact Message - Portfolio',
+    `New contact message from ${contactData.name}`
+  );
+  
   return result;
 };
 

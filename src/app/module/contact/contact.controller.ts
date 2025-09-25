@@ -4,6 +4,9 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 
 const createContact = catchAsync(async (req: Request, res: Response) => {
+  if (!req.body.subject) {
+    req.body.subject = 'General Inquiry';
+  }
   const result = await contactService.createContact(req.body);
   sendResponse(res, {
     statusCode: 201,
