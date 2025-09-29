@@ -16,4 +16,8 @@ route.put('/:id', blogController.updateBlog)
 route.delete('/:id', blogController.deleteBlog)
 route.patch('/:id/views', blogController.incrementViews)
 
+// Comment routes
+route.post('/:id/comments', blogController.createComment)
+route.get('/:id/comments', blogController.getComments)
+
 export const blogRoute = route

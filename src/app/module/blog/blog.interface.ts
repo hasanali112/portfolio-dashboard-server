@@ -4,6 +4,7 @@ export type TBlog = {
   title: string
   description: string
   content: string
+  category: 'All' | 'Web Dev' | 'Mobile Dev' | 'AI/ML' | 'DevOps' | 'UI/UX'
 
   // SEO & Metadata
   slug: string

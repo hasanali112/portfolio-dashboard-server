@@ -24,6 +24,7 @@ const shopSchema = new Schema<TShop>(
     metaTitle: { type: String },
     metaDescription: { type: String },
     tags: [{ type: String }],
+    demoVideoUrl: { type: String },
 
     featured: { type: Boolean, default: false },
     popular: { type: Boolean, default: false },

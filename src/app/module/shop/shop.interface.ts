@@ -20,6 +20,7 @@ export type TShop = {
   metaTitle?: string
   metaDescription?: string
   tags: string[]
+  demoVideoUrl?: string
 
   // Status & Visibility
   featured: boolean

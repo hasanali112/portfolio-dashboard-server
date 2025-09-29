@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { blogService } from './blog.service'
 import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
+import { Comment } from './comment.model'
 
 const createBlog = catchAsync(async (req: Request, res: Response) => {
   const result = await blogService.blogCreate(req)
@@ -72,6 +73,36 @@ const incrementViews = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+// Comment Controllers
+const createComment = catchAsync(async (req: Request, res: Response) => {
+  const blogId = req.params.id
+  const { name, email, comment } = req.body
+  
+  const newComment = await Comment.create({
+    blogId,
+    name,
+    email,
+    comment,
+  })
+  
+  sendResponse(res, {
+    statusCode: 201,
+    message: 'Comment created successfully! 🎉',
+    data: newComment,
+  })
+})
+
+const getComments = catchAsync(async (req: Request, res: Response) => {
+  const blogId = req.params.id
+  const comments = await Comment.find({ blogId }).sort({ createdAt: -1 })
+  
+  sendResponse(res, {
+    statusCode: 200,
+    message: 'Comments retrieved successfully! 🎉',
+    data: comments,
+  })
+})
+
 export const blogController = {
   createBlog,
   getAllBlogs,
@@ -80,4 +111,6 @@ export const blogController = {
   updateBlog,
   deleteBlog,
   incrementViews,
+  createComment,
+  getComments,
 }

@@ -8,6 +8,12 @@ const blogSchema = new Schema<TBlog>(
     title: { type: String, required: true },
     description: { type: String, required: true },
     content: { type: String, required: true },
+    category: { 
+      type: String, 
+      required: true,
+      enum: ['All', 'Web Dev', 'Mobile Dev', 'AI/ML', 'DevOps', 'UI/UX'],
+      default: 'Web Dev'
+    },
 
     slug: { type: String, required: true, unique: true },
     metaTitle: { type: String },
