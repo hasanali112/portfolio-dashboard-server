@@ -1,18 +1,29 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
-import { skillRoutes } from './module/skill/skill.route'
-import { projectRoute } from './module/project/project.routes'
-import { userRoutes } from './module/user/user.routes'
-import { blogRoute } from './module/blog/blog.routes'
+import middilewareRoutes from './app/routes'
+import globalErrorHandler from './app/middleware/globalErrorHandler'
+import { notFoundRoutes } from './app/middleware/notFoundRoutes'
+import cookieParser from 'cookie-parser'
 const app: Application = express()
 
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/v1', skillRoutes)
-app.use('/api/v1', projectRoute)
-app.use('/api/v1', userRoutes)
-app.use('/api/v1', blogRoute)
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://arvion-mart-frontend-rho.vercel.app',
+      'https://arvionmart.vercel.app',
+    ],
+    credentials: true,
+  }),
+)
+
+app.use('/api/v1', middilewareRoutes)
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
@@ -20,5 +31,9 @@ app.get('/', (req: Request, res: Response) => {
     message: 'Portfolio server is running',
   })
 })
+
+// Error Handlers
+app.use(globalErrorHandler)
+app.use(notFoundRoutes)
 
 export default app
