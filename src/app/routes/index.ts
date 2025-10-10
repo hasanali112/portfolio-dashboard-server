@@ -9,6 +9,7 @@ import { serviceRoute } from '../module/services/services.routes'
 import { contactRoute } from '../module/contact/contact.routes'
 import { authRoute } from '../module/auth/auth.routes'
 import { testimonialRoute } from '../module/testimonial/testimonial.routes'
+import { ClientMessageRoutes } from '../module/clientMessage/clientMessage.route'
 
 const middilewareRoutes = Router()
 
@@ -52,6 +53,10 @@ const routes = [
   {
     path: '/contact',
     route: contactRoute,
+  },
+  {
+    path: '/client-messages',
+    route: ClientMessageRoutes,
   },
 ]
 
