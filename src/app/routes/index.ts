@@ -10,6 +10,8 @@ import { contactRoute } from '../module/contact/contact.routes'
 import { authRoute } from '../module/auth/auth.routes'
 import { testimonialRoute } from '../module/testimonial/testimonial.routes'
 import { ClientMessageRoutes } from '../module/clientMessage/clientMessage.route'
+import { VisitorRoutes } from '../module/visitor/visitor.route'
+import { TaskRoutes } from '../module/timeManagement/timeManagement.route'
 
 const middilewareRoutes = Router()
 
@@ -57,6 +59,14 @@ const routes = [
   {
     path: '/client-messages',
     route: ClientMessageRoutes,
+  },
+  {
+    path: '/visitors',
+    route: VisitorRoutes,
+  },
+  {
+    path: '/tasks',
+    route: TaskRoutes,
   },
 ]
 

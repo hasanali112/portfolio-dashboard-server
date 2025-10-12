@@ -6,6 +6,9 @@ import { notFoundRoutes } from './app/middleware/notFoundRoutes'
 import cookieParser from 'cookie-parser'
 const app: Application = express()
 
+// Trust proxy for correct IP detection
+app.set('trust proxy', true)
+
 app.use(express.json())
 app.use(cors())
 
@@ -18,6 +21,7 @@ app.use(
       'http://localhost:3000',
       'https://arvion-mart-frontend-rho.vercel.app',
       'https://arvionmart.vercel.app',
+      'https://mdhasanalikhan.vercel.app',
     ],
     credentials: true,
   }),
