@@ -4,6 +4,7 @@ import middilewareRoutes from './app/routes'
 import globalErrorHandler from './app/middleware/globalErrorHandler'
 import { notFoundRoutes } from './app/middleware/notFoundRoutes'
 import cookieParser from 'cookie-parser'
+import { startScheduler } from './app/utils/scheduler'
 const app: Application = express()
 
 // Trust proxy for correct IP detection
@@ -35,6 +36,9 @@ app.get('/', (req: Request, res: Response) => {
     message: 'Portfolio server is running',
   })
 })
+
+// Start scheduler
+startScheduler()
 
 // Error Handlers
 app.use(globalErrorHandler)

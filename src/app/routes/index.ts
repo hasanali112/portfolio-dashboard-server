@@ -12,6 +12,7 @@ import { testimonialRoute } from '../module/testimonial/testimonial.routes'
 import { ClientMessageRoutes } from '../module/clientMessage/clientMessage.route'
 import { VisitorRoutes } from '../module/visitor/visitor.route'
 import { TaskRoutes } from '../module/timeManagement/timeManagement.route'
+import { LinkedInConnectionRoutes } from '../module/linkedinConnection/linkedinConnection.route'
 
 const middilewareRoutes = Router()
 
@@ -67,6 +68,10 @@ const routes = [
   {
     path: '/tasks',
     route: TaskRoutes,
+  },
+  {
+    path: '/linkedin-connections',
+    route: LinkedInConnectionRoutes,
   },
 ]
 
