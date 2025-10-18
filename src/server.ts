@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-console */
 import mongoose from 'mongoose'
 import app from './app'
@@ -21,6 +22,7 @@ async function main() {
       console.error('Failed to seed super admin:', error)
     }
 
+    //@ts-ignore
     server = app.listen(port, () => {
       console.log(`Portfolio app listening on port ${config.port}`)
     })

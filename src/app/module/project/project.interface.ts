@@ -5,6 +5,7 @@ export type TProjct = {
   liveLink: string
   gitRepoLinkFrontend?: string
   gitRepoLinkBackend?: string
+  features?: string[]
   technology: {
     technologyName: string
     technologyImage: string

@@ -9,6 +9,7 @@ const projectSchema = new Schema<TProjct>(
     liveLink: { type: String, required: true },
     gitRepoLinkFrontend: { type: String },
     gitRepoLinkBackend: { type: String },
+    features: { type: [String] },
     technology: [
       {
         technologyName: { type: String, required: true },
