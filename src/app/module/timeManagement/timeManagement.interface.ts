@@ -18,3 +18,21 @@ export interface TTask {
   details: TTaskDetail[];
   timers: TTimerEntry[];
 }
+
+export interface TWeekendSchedule {
+  day: string;
+  focus: string;
+  type: string;
+  topic: string;
+}
+
+export interface IDailySchedule {
+  time: string;
+  icon: string;
+  task: string;
+  description: string;
+  startTime?: string;
+  endTime?: string;
+  duration?: number;
+  status?: 'Pending' | 'Running' | 'Complete';
+}
