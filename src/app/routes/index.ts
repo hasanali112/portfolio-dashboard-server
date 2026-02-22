@@ -14,6 +14,7 @@ import { VisitorRoutes } from '../module/visitor/visitor.route'
 import { TaskRoutes } from '../module/timeManagement/timeManagement.route'
 import { LinkedInConnectionRoutes } from '../module/linkedinConnection/linkedinConnection.route'
 import { FreelancingProfileRoutes } from '../module/freelancingProfile/freelancingProfile.routes'
+import { caseStudyRoutes } from '../module/caseStudy/caseStudy.routes'
 import { CPRoutes } from '../module/cp/cp.route'
 
 const middilewareRoutes = Router()
@@ -82,6 +83,10 @@ const routes = [
   {
     path: '/cp',
     route: CPRoutes,
+  },
+  {
+    path: '/case-studies',
+    route: caseStudyRoutes,
   },
 ]
 
